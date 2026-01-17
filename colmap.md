@@ -4,34 +4,21 @@
 
 ------
 
-### **1. 核心原理**
+### **一、核心原理**
 
-- **输入**：多视图中匹配的2D特征点（如SIFT、ORB）及其初始3D坐标、相机位姿（旋转矩阵R、平移向量t）和内参（焦距、畸变等）。
+- **输入**：多视图中匹配的 2D 特征点（如 SIFT、ORB）、初始 3D 坐标、相机位姿（包含旋转矩阵 $R$、平移向量 $t$）以及内参（焦距、畸变参数等）。
 
-- **优化目标**：最小化**重投影误差**（Reprojection Error），即3D点投影到各相机成像平面的位置与实际观测特征点位置的差值（式1）：
-  $$
-  \min_{\mathbf{P}_i, \mathbf{X}_j} \sum_{i,j} \| \pi(\mathbf{P}_i, \mathbf{X}_j) - \mathbf{x}_{ij} \|^2
-  $$
-  其中：
+- **优化目标**：最小化**重投影误差**（Reprojection Error），即 3D 点投影到各相机成像平面的位置与实际观测特征点位置的差值（式 1）：
 
-  - $$
-    \mathbf{P}_i：第i个相机的投影矩阵（包含R、t）
-    $$
+$$
+\min_{\mathbf{P}_i, \mathbf{X}_j} \sum_{i,j} \| \pi(\mathbf{P}_i, \mathbf{X}_j) - \mathbf{x}_{ij} \|^2
+$$
 
-  - 
-    $$
-    \mathbf{X}_j ：第j个3D点坐标
-    $$
-
-  - $$
-    \pi(\cdot)：相机投影函数（包含内参）
-    $$
-
-    
-
-  - $$
-    \mathbf{x}_{ij} ：第j个点在i相机中的实际观测坐标。
-    $$
+**参数说明：**
+- $\mathbf{P}_i$ ：第 $i$ 个相机的投影矩阵（包含 $R, t$）
+- $\mathbf{X}_j$ ：第 $j$ 个 3D 点坐标
+- $\pi(\cdot)$ ：相机投影函数（包含内参）
+- $\mathbf{x}_{ij}$ ：第 $j$ 个点在第 $i$ 个相机中的实际观测坐标
 
     
 
@@ -63,30 +50,20 @@
 
 ------
 
-# 2.L-M算法：
+### **2. L-M 算法更新方程**
 
-通过动态调整**阻尼因子（Damping Parameter）** $\lambda$ 来平衡两种策略：
-
-- **高斯牛顿法（GN）**：在局部近似为二次函数时快速收敛（但Hessian矩阵 $\mathbf{J}^T\mathbf{J}$ 可能病态）。
-- **梯度下降法（GD）**：在远离最优解时更稳健（但收敛慢）。
-   **参数更新方程**：
+其参数更新方程为：
 
 $$
-(\mathbf{J}^T\mathbf{J} + \lambda \operatorname{diag}(\mathbf{J}^T\mathbf{J})) \Delta \theta = -\mathbf{J}^T \mathbf{r} 
+(\mathbf{J}^T\mathbf{J} + \lambda \text{diag}(\mathbf{J}^T\mathbf{J})) \Delta \theta = -\mathbf{J}^T \mathbf{r}
 $$
 
 其中：
 
-- $$
-  \mathbf{J}
-  $$
-
-  是残差对参数的雅可比矩阵
-- $$
-  \lambda
-  $$
-
-  越大，更新步长 $\Delta \theta$ 越接近GD方向；$\lambda$ 越小，越接近GN方向。
+- $\mathbf{J}$ 是残差对参数的雅可比矩阵。
+- $\lambda$ 是阻尼因子：
+    - $\lambda$ 越大，更新步长 $\Delta \theta$ 越接近**梯度下降（GD）**方向。
+    - $\lambda$ 越小，更新步长越接近**高斯-牛顿（GN）**方向。
 
 # 3.场景图增强：
 
