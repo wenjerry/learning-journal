@@ -71,12 +71,22 @@
 - **梯度下降法（GD）**：在远离最优解时更稳健（但收敛慢）。
    **参数更新方程**：
 
-$(\mathbf{J}^T\mathbf{J} + \lambda \operatorname{diag}(\mathbf{J}^T\mathbf{J})) \Delta \theta = -\mathbf{J}^T \mathbf{r} $
+$$
+(\mathbf{J}^T\mathbf{J} + \lambda \operatorname{diag}(\mathbf{J}^T\mathbf{J})) \Delta \theta = -\mathbf{J}^T \mathbf{r} 
+$$
 
 其中：
 
-- $\mathbf{J}$ 是残差对参数的雅可比矩阵
-- $\lambda$ 越大，更新步长 $\Delta \theta$ 越接近GD方向；$\lambda$ 越小，越接近GN方向。
+- $$
+  \mathbf{J}
+  $$
+
+  是残差对参数的雅可比矩阵
+- $$
+  \lambda
+  $$
+
+  越大，更新步长 $\Delta \theta$ 越接近GD方向；$\lambda$ 越小，越接近GN方向。
 
 # 3.场景图增强：
 
@@ -176,7 +186,7 @@ $(\mathbf{J}^T\mathbf{J} + \lambda \operatorname{diag}(\mathbf{J}^T\mathbf{J})) 
 3. 依次点击：**Undistortion** (去畸变) -> **Stereo** (立体匹配，最耗时) -> **Fusion** (融合)。
 4. 完成后，在文件夹里找到 `fused.ply`，用 MeshLab 打开查看。
 
-# 6.南楼实验结果及分析
+# 6.南楼实验结果
 
 ![2503dd40be258c354a215efe0328e4de](/Users/wengjinrui/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_9s7ra5oj3g1321_ba38/temp/RWTemp/2026-01/2503dd40be258c354a215efe0328e4de.png)
 
