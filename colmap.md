@@ -165,10 +165,9 @@ $$
 
 # 6.南楼实验结果
 
-![2503dd40be258c354a215efe0328e4de](/Users/wengjinrui/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_9s7ra5oj3g1321_ba38/temp/RWTemp/2026-01/2503dd40be258c354a215efe0328e4de.png)
-
+![图一.数据集以及稀疏重建结果](15285d97052cb76ed795b6c6e38f0bfe.png)
 图一.数据集以及稀疏重建结果
 
-![c5c3f53afae4c4103e35fbb053a9500d](/Users/wengjinrui/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/wxid_9s7ra5oj3g1321_ba38/temp/RWTemp/2026-01/c5c3f53afae4c4103e35fbb053a9500d.png)
 
+![图二.colmap稠密重建效果](15285d97052cb76ed795b6c6e38f0bfe.png)
 图二.colmap稠密重建效果
