@@ -169,5 +169,5 @@ $$
 图一.数据集以及稀疏重建结果
 
 
-![图二.colmap稠密重建效果](15285d97052cb76ed795b6c6e38f0bfe.png)
+![图二.colmap稠密重建效果](5ec3f5e9aa46644fb22ed9caed068c78.png)
 图二.colmap稠密重建效果
